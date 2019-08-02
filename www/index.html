@@ -2,16 +2,80 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <script src="components/loader.js"></script>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script>
+  
+    <!-- swiperの導入 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<script src="components/loader.js"></script>
+<script>
+
+      var id=localStorage.getItem('ID');
+      var pw=localStorage.getItem('PW');
+
+      window.onload = function(){
+        if(id!=null&&pw!=null){
+          document.getElementById("idInput").value=id;  
+          document.getElementById("pwInput").value=pw;
+        }
+      }
+
+      function login(){
+        //alert("ログインボタン");
+        //alert(document.getElementById("idInput").value);
+        if(document.getElementById("idInput").value=="aso"&&document.getElementById("pwInput").value=="1234"){
+          //alert("ログイン成功");
+          if(document.getElementById("checkbtn").checked){
+            //alert("チェックされています");
+            localStorage.setItem('ID',document.getElementById("idInput").value);
+            localStorage.setItem('PW',document.getElementById("pwInput").value);
+          }
+        }else{
+          alert("IDまたはパスワードが違います");
+        }
+        window.location.href = 'result.html';
+      }
+      function pwdel(){
+       localStorage.clear();
+      }
+      function makego(){
+        window.location.href = 'make.html';
+      }
+      function codego(){
+        window.location.href = 'code.html';
+      }
     </script>
 </head>
 <body>
-	<br />
-    This is a template for Monaca app.
+  <br>
+  <center><p><img src="./img/rogo.png" width="300"></p></center>
+  <div id="form">
+   <p>ID</p>
+   <input type="text" id="idInput" size="40">
+   <br>
+   <p>Password</p>
+   <input type="password" id="pwInput" size="40">
+   <br><br>
+   <input type="checkbox" id="checkbtn" value="ok">ログイン情報を保存する
+ </div>
+ <div id="btns">
+
+ <div id="btnDiv">
+   <center><button onclick="login()" class="c-btn hover5">ログイン</button></center>
+ </div><br>
+ <div id="btnDiv">
+   <center><button onclick="makego()" class="c-btn hover5">新規作成</button></center>
+ </div><br>
+ 
+ <br>
+ </div>
+<br><br><br><br><br>
+<h1>開発用遷移</h1>
+ <div id="btnDiv">
+   <center><button onclick="codego();" class="c-btn hover5">コーディネート画面</button></center>
+ </div><br>
 </body>
 </html>
+

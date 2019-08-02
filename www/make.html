@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+  
+    <!-- swiperの導入 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+    <script src="components/loader.js"></script>
+<script>
+  var galleryThumbs = new Swiper('.tab-menu', {
+    spaceBetween: 20,
+    slidesPerView: 'auto',
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    slideActiveClass: 'swiper-slide-active'
+  });
+  galleryThumbs.on('tap', function () {
+    var current = galleryTop.activeIndex;
+    galleryThumbs.slideTo(current, 500, true);
+  });
+  var galleryTop = new Swiper('.tab-contents', {
+    autoHeight: true,
+    thumbs: {
+      swiper: galleryThumbs
+    }
+});
+
+//初期状態を表すフラグ
+localStorage.setItem("makeid_tops",1);
+
+
+//アバター表示のスクリプト
+/*
+配列内に画像を保存
+*/
+
+
+</script>
+</head>
+<body>
+  <h1>User Registration</h1>
+
+<div class="dress">
+      <img src="./img/m2.png" id="man" width="70" height="auto">
+      <!-- 撮影前のダミー画像を置いている　撮影後、ここに画像が反映される -->      
+</div>
+<br>
+
+ <div class="tabs">
+  <input id="face" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="face"><img src="./img/icon_face.png" width="30" height="30"></label>
+  <input id="hair" type="radio" name="tab_item">
+  <label class="tab_item" for="hair"><img src="./img/icon_hair.png" width="30" height="30"></label>
+  <input id="body" type="radio" name="tab_item">
+  <label class="tab_item" for="body"><img src="./img/icon_body.png" width="30" height="30"></label>
+  <div class="tab_content" id="face_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <!--　中身をスクロールする部分 -->
+        <div style="width:400px;height:200px;overflow:auto;">
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops0" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img0" width="80" height="75" style="position:absolute;object-fit: cover;"></div></a>
+          </div>
+      </p>
+    </div>
+  </div>
+  <div class="tab_content" id="hair_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">ボトムスの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="body_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">アウターの内容がここに入ります</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<center><a href="main.html" class="c-btn hover5" id="a-hover" style="top:10px">　　OK 　</a></center>
+</body>
+</html>
+

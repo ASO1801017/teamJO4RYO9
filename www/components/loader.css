@@ -1,6 +1,268 @@
-/**
- * This is an auto-generated code by Monaca JS/CSS Components.
- * Please do not edit by hand.
- */
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 10px;
+  padding-bottom: 0px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  margin: 0 auto;
+  }
 
-/*** <GENERATED> ***/
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/3);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height:65px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 2px 9px;           
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#tops:checked ~ #tops_content,
+#bottoms:checked ~ #bottoms_content,
+#outer:checked ~ #outer_content {
+  display: block;
+}
+
+#face:checked ~ #face_content,
+#hair:checked ~ #hair_content,
+#body:checked ~ #body_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+
+/*ボタンのCSS*/
+.c-btn{
+  display: inline-block;
+  /*margin: 200px;*/
+  padding:10px 10px;
+  margin: 3px;
+  font-size: 16px;
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  border: 1px solid #5ab4bd;
+  background-color: #fff; 
+  color: rgb(14, 17, 17);
+  border-radius: 5px;
+  position: relative;
+  top: 0;
+  transition: all 0.1s ease-in-out;
+}
+.c-btn:hover{
+  text-decoration: none;
+  color: #fff;
+}
+#a-hover{
+  margin-top: 10px;
+}
+.hover5{
+  box-shadow: 0 2px 0 rgba(72,144,151, 1);
+}
+/*ふわっとするやつ*/
+.hover5:hover{
+  position: relative;
+  top: -1px;
+  background-color: rgb(189, 224, 226);
+  box-shadow: 0 3px 0 rgb(202, 237, 240);
+}
+/*白くなるやつ*/
+.hover2:hover{
+  color: #5ab4bd; 
+  background-color: transparent;
+  box-shadow: 0 0 4px 1px rgba(90,180,189,0.5) inset;
+  text-shadow: 1px 1px 2px #fff; 
+}
+
+/*アンカータグの下線を消す*/
+
+a {
+text-decoration: none;
+}
+
+/* man のCSS */
+
+
+.m_main{
+    padding: 100px 80px;
+}
+
+/*着せ替え用CSS*/
+.dress {
+    height: 220px;
+  }
+  #man {
+    position:absolute;
+    left:150px;
+    top:75px;
+  }
+  #man_tops {
+    position:absolute;
+    left:150px;
+    top:110px;
+    width: 70px;
+    height: 67px;
+    object-fit: cover;
+  }
+  #man_tops_src {
+    position:absolute;
+    left:150px;
+    top:110px;
+  }
+  #man_bottoms {
+    position:absolute;
+    left:150px;
+    top:170px;
+  }
+
+/*見出し*/
+h1 {
+  position: relative;
+  padding: 5px 5px 5px 42px;
+  background: #5ab4bd;
+  font-size: 20px;
+  color: #565656;
+  margin-left: 60px;
+  line-height: 1.3;
+  z-index:-1;
+}
+
+h1:before {
+  position: absolute;
+  content: '';
+  left: -2px;
+  top: -2px;
+  border: none;
+  border-left: solid 40px white;
+  border-bottom: solid 79px transparent;
+  z-index:-2;
+}
+
+
+/*トリミング*/
+.trim {
+    overflow: hidden;
+    width: 300px;/* トリミングしたい枠の幅 */
+    height: 300px;/* トリミングしたい枠の高さ */
+    position: relative;
+}
+.trim2 {
+    overflow: hidden;
+    width: 80px;/* トリミングしたい枠の幅 */
+    height: 80px;/* トリミングしたい枠の高さ */
+    position: relative;
+}
+
+
+/* login画面 */
+body,p,form,input{margin: 0}
+#form{
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #555;
+  }
+
+form p{
+    font-size: 14px;
+    }
+
+.form-title{
+  text-align: center;
+  }
+
+.ID,.Password{
+  margin-bottom: 20px;
+  }
+
+input[type="ID"],
+input[type="Password"] {
+  width: 300px;
+  padding: 4px;
+  font-size: 14px;
+  }
+    
+.submit{
+  text-align: right;
+  }
+
+/* font */
+#form p{
+  color: #077685;
+  font-weight: bold;
+  }
+
+#form .form-title{
+  font-family: Arial;
+  font-size: 30px;
+  color: #4eb4c2;
+  }
+
+/* skin */
+#form{
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 1px 10px #488a9e;
+  -moz-box-shadow: 0px 1px 10px #488a9e;
+  box-shadow: 0px 1px 10px #488a9e;
+  border: solid #4eb4c2 1px;
+  background: #fafafa;
+  }
+
+#form .form-title{
+  padding-bottom: 6px;
+  border-bottom: 2px solid #4eb4c2;
+  margin-bottom: 20px;
+  }
+
+.submit input{
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  text-decoration: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 8px 6px #e3e3e3;
+  -moz-box-shadow: 0px 8px 6px #e3e3e3;
+  box-shadow: 0px 8px 6px #e3e3e3;
+  border: solid #f5fdff 4px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#61c7e0), to(#418da8));
+  background: -moz-linear-gradient(top, #61c7e0, #418da8);
+  }
+.submit input:hover{
+  background: #37a4bf;
+ }
+

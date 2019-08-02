@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+  
+    <!-- swiperの導入 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script src="components/loader.js"></script>
+
+<script>
+  var galleryThumbs = new Swiper('.tab-menu', {
+    spaceBetween: 20,
+    slidesPerView: 'auto',
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    slideActiveClass: 'swiper-slide-active'
+  });
+  galleryThumbs.on('tap', function () {
+    var current = galleryTop.activeIndex;
+    galleryThumbs.slideTo(current, 500, true);
+  });
+  var galleryTop = new Swiper('.tab-contents', {
+    autoHeight: true,
+    thumbs: {
+      swiper: galleryThumbs
+    }
+  });
+
+ //リストの作成
+      //var topslist = [];
+
+ //ボタンの画像配置
+ window.onload =function OnLinkClick(){
+
+        //var topslist = [];
+        //var imageURI2 = localStorage.getItem("tops_img");
+        //imageURI2 = JSON.parse(imageURI2);
+
+        //選択されている
+        //var tops_data = localStorage.getItem('topslist');
+        //tops_data = JSON.parse(tops_data);
+        //var img = document.getElementById('tops_img1');
+        //img.setAttribute('src',tops_data[0]['img_src']);
+
+
+        //画像をローカルストレージに入れる
+        //localStorage.setItem("topslist", JSON.stringify(topslist));
+        
+        //localStorage.setItem("img", "icon_add.png");
+
+        //topslist.push({img_src:img_src,tops_take=tops_take,tops_sode:tops_sode,tops_id:tops_id});
+
+        //"topslist"の値を取り出す
+        
+        //var src=localStorage.getItem("tops_img");
+        //src=JSON.parse(src);
+        //var take=localStorage.getItem("tops_take");
+        //var sode=localStorage.getItem("tops_sode");
+        //data.push({img_src:src,tops_take:take,tops_sode:sode});
+        //localStorage.setItem('topslist', JSON.stringify(data));
+
+        //初期状態を表すフラグを呼び出す
+        var makeid_tops=localStorage.getItem("makeid_tops");
+
+
+        //一つ目の配列
+        if(makeid_tops==1){
+          var data = [];
+          var tops_data="一つ目の配列です";
+          data.push({img_src:tops_data,tops_take:tops_data,tops_sode:tops_data});
+          localStorage.setItem('topslist', JSON.stringify(data));
+          //初期状態を表すフラグを起こす
+          localStorage.setItem("makeid_tops",222);
+        }
+        
+
+        //alert(tops_data[0]['img_src']);
+        //var img_src=data[0]['img'];
+        //alert(tops_data.length);
+
+        var tops_data = localStorage.getItem('topslist');
+        tops_data = JSON.parse(tops_data);
+
+        //alert(tops_data[0]['img_src']);
+        //→"一つ目の配列です"
+
+        for (var i = 1; i < tops_data.length; i++) {
+          //alert(tops_data.length);
+          var img = document.getElementById("tops_img"+i);
+          //alert(i+"  "+"tops"+i);
+          img.setAttribute('src',tops_data[i]['img_src']);
+        }
+
+        
+      }
+
+      //topsの着せ替え
+      function change(id_value){
+        //var id_value = ele.id;
+        //alert(id_value);
+        var tops_data = localStorage.getItem('topslist');
+        tops_data = JSON.parse(tops_data);
+
+        for (var i = 0; i < tops_data.length; i++) {
+
+          var tops_id="tops"+i;
+          //alert(tops_id);
+
+          if(id_value==tops_id){
+            var img = document.getElementById('man_tops');
+            img.setAttribute('src',tops_data[i]['img_src']);
+          }
+          
+        }
+
+      }
+
+      function mainback(){
+        window.location.href = 'main.html';
+
+      }
+
+
+</script>
+</head>
+<body>
+  
+  <!-- アバターの表示 -->
+  <a href="#" onclick="mainback()"><img src="./img/back.png" width="40" style="position:absolute;left:13px;top:10px;"></a>
+  <h1>Coordinate</h1>
+  <div class="dress">
+      <img src="./img/m2.png" id="man" width="70" height="auto">
+      <img src="./img/noimage.gif" id="man_tops" name="innerLink">
+      <figure>
+      <!-- 撮影前のダミー画像を置いている　撮影後、ここに画像が反映される -->      
+      </figure>
+      <img src="./img/tops_kame_src.png" id="man_tops_src" width="70" height="auto">
+      <img src="./img/icon_bottoms.png" id="man_bottoms" name="outerLink"width="70" height="auto">
+  </div>
+  <br>
+
+ <div class="tabs">
+  <input id="tops" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="tops"><img src="./img/icon_tops.png" width="30" height="30"></label>
+  <input id="bottoms" type="radio" name="tab_item">
+  <label class="tab_item" for="bottoms"><img src="./img/icon_bottoms.png" width="30" height="30"></label>
+  <input id="outer" type="radio" name="tab_item">
+  <label class="tab_item" for="outer"><img src="./img/icon_outer.png" width="30" height="30"></label>
+  <div class="tab_content" id="tops_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <!--　中身をスクロールする部分 -->
+        <div style="width:400px;height:200px;overflow:auto;">
+          <!--追加ボタン -->
+          <a href="touroku.html" class="c-btn hover2"><div class="trim2"><img src="./img/icon_add.png" width="80" height="80" style="position:absolute;object-fit: cover;"></div></a>
+          <!--選択ボタン -->
+          <a href="#" class="c-btn hover2" id="tops1" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img1" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src1" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops2" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img2" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src2" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops3" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img3" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src3" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops4" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img4" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src4" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops5" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img5" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src5" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops6" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img6" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src6" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops7" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img7" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src7" width="80" height="auto" style="position:absolute;"></div></a>
+
+          <a href="#" class="c-btn hover2" id="tops8" onclick="change(this.id);"><div class="trim2"><img src="./img/noimage.gif" id="tops_img8" width="80" height="75" style="position:absolute;object-fit: cover;"><img src="./img/tops_kame_src.png" id="man_tops_src8" width="80" height="auto" style="position:absolute;"></div></a>
+          
+          </div>
+      </p>
+    </div>
+  </div>
+  <div class="tab_content" id="bottoms_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">ボトムスの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="outer_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">アウターの内容がここに入ります</p>
+    </div>
+  </div>
+</div>
+</div>
+<center><a href="main.html" class="c-btn hover5" id="a-hover" style="top:10px">　Save　</a></center>
+</body>
+</html>

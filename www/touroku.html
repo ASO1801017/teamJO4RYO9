@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+        function getPhoto () {
+    navigator.camera.getPicture (onSuccess, onFail, { 
+        //0-100で画質を指定
+        quality: 50,
+        //画像のURIを返す指定
+        destinationType: Camera.DestinationType.FILE_URI,
+        //端末のアルバムに画像を保存する
+        //saveToPhotoAlbum: true
+    });
+
+    //撮影に成功した場合
+    function onSuccess (imageURI) {
+        var image = document.getElementById ("image");
+        var take_img = [];
+        imageURI = imageURI + "?" + Math.floor( new Date().getTime() / 1000 );
+        image.src = imageURI;
+        localStorage.setItem("tops_img", JSON.stringify(imageURI));
+        
+    }
+
+    //撮影に失敗した場合
+    function onFail (message) {
+        alert ("Error occured: " + message);
+    }
+}
+    </script>
+</head>
+<body>
+  
+  <a href="#" onclick="history.back()"><img src="./img/back.png" width="40" style="position:absolute;left:13px;top:10px;"></a>
+        <h1>Add new clothes</h1>
+        <br><br><br>
+
+    <!--洋服登録-->
+        <center><p>Set picture</p></center>
+
+    <figure>
+      <!-- 撮影前のダミー画像を置いている　撮影後、ここに画像が反映される -->
+      <div class="trim"><center><img src="./img/noimage.gif" style="width:100%;height:auto;" id="image"></center></div>
+    </figure>
+    <br>
+    <!-- ボタン -->
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+    <button modifier="large--cta" should-spin="true" onClick="getPhoto()">カメラ</button>
+    &ensp;&ensp;&ensp;&ensp;&ensp;
+    <button>アルバム</button><br><br><br>
+    <center><a href="detail.html" class="c-btn hover5" id="ok-button">　OK　</a></center>
+   
+</body>
+</html>

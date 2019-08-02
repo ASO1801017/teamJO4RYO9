@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+
+      window.onload =function img_show(){
+        //imageURI = imageURI + "?" + Math.floor( new Date().getTime() / 1000 );
+        var imageURI2 = localStorage.getItem("tops_img");
+        imageURI2 = JSON.parse(imageURI2);
+        image.src = imageURI2;
+      };
+
+      function setimglist(){
+        var src=localStorage.getItem("tops_img");
+        src=JSON.parse(src);
+        var take=localStorage.getItem("tops_take");
+        var sode=localStorage.getItem("tops_sode");
+
+        //var data=[];
+        //data.push({img_src:src,tops_take:take,tops_sode:sode});
+        //localStorage.setItem('topslist', JSON.stringify(data));
+        //data.push({img_src:src,tops_take:take,tops_sode:sode});
+        //slocalStorage.setItem('topslist', JSON.stringify(data));
+
+        var tops_data = localStorage.getItem('topslist');
+        tops_data = JSON.parse(tops_data);
+
+        var data=[];
+
+        //topslistの既存のデータをdataに入れる
+        for (var i = 0; i < tops_data.length; i++) {
+          //alert(tops_data[i]['img_src'])
+          data.push({img_src:tops_data[i]['img_src'],tops_take:tops_data[i]['tops_take'],tops_sode:tops_data[i]['tops_sode']});
+        }
+
+        data.push({img_src:src,tops_take:take,tops_sode:sode});
+        localStorage.setItem('topslist', JSON.stringify(data));
+        //alert(src,take,sode);
+
+
+        //var tops_data = localStorage.getItem('topslist');
+        //tops_data = JSON.parse(tops_data);
+        //alert(tops_data[1]['img_src'])
+
+
+        //var tops_data = localStorage.getItem('topslist');
+        //tops_data = JSON.parse(tops_data);
+        //alert(data[1]['tops_id']);
+
+        //for (var i = 0; i < data.length; i++) {
+          //for (var key in data[i]) {
+            //alert(data[i][key]);
+          //}
+        //}
+
+      };
+
+    </script>
+</head>
+<body>
+    <!--カスタマイズ-->
+  <div class="left">
+  
+
+        <div class="left">
+        <h1>Add new clothes</h1><br>
+        <a href="#" onclick="history.back()"><img src="./img/back.png" width="40" style="position:absolute;left:13px;top:10px;"></a>
+        </div>
+        <br>
+    
+      <!-- 撮影前のダミー画像を置いている　撮影後、ここに画像が反映される -->
+      <figure>
+      <!-- 撮影前のダミー画像を置いている　撮影後、ここに画像が反映される -->
+      <div class="trim"><center><img src="./img/noimage.gif" style="width:100%;height:auto;" id="image"></center></div>
+    </figure>
+    <br><br><br>
+
+      <center><a href="code.html" class="c-btn hover5" id="comp-button" onclick="setimglist();">　completed　</a></center>
+
+  </div>
+</body>
+</html>
